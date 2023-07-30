@@ -1,3 +1,4 @@
+import { ClienteSemSenha } from "../usecases/Clientes";
 import { AtualizarClienteDTO } from "../usecases/Clientes/atualizar.usecase";
 import Usuario, { UsuarioDTO } from "./usuario.class";
 
@@ -19,12 +20,11 @@ export class Cliente extends Usuario {
   }
 
   public toJSON() {
-    const objCliente = {
+    const objCliente: ClienteSemSenha & { endereco?: Array<any> } = {
       id: this.id,
       nome_completo: this.nome_completo,
       telefone: this.telefone,
       email: this.email,
-      senha: this.senha,
       cpf: this.cpf,
       endereco: this.endereco,
     };
@@ -47,12 +47,11 @@ export class Cliente extends Usuario {
   }
 
   public retornaClienteSemSenha() {
-    const objCliente = {
+    const objCliente: ClienteSemSenha & { endereco?: Array<any> } = {
       id: this.id,
       nome_completo: this.nome_completo,
       telefone: this.telefone,
       email: this.email,
-      senha: this.senha,
       cpf: this.cpf,
       endereco: this.endereco,
     };
